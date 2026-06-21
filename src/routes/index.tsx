@@ -29,33 +29,43 @@ export default component$(() => {
    * las señales que rastrea (en este caso, 'activeCity.value').
    * Qwik rastrea automáticamente las señales leídas dentro de 'track()'.
    */
-  useTask$(async ({ track }) => {
+  useTask$(({ track }) => {
     const city = track(() => activeCity.value);
     if (!city) return;
 
     weatherStore.loading = true;
     weatherStore.error = null;
 
-    try {
-      const data = await fetchWeather(city);
-      weatherStore.data = data;
+    // Realizar la petición asíncrona
+    const promise = fetchWeather(city)
+      .then((data) => {
+        weatherStore.data = data;
 
-      // Actualizar el historial reactivamente
-      const cleanName = data.name.trim();
-      const currentList = historyStore.cities;
+        // Actualizar el historial reactivamente
+        const cleanName = data.name.trim();
+        const currentList = historyStore.cities;
 
-      // Filtrar la ciudad si ya existe y ponerla al inicio (máx 5 ciudades)
-      historyStore.cities = [
-        cleanName,
-        ...currentList.filter((c) => c.toLowerCase() !== cleanName.toLowerCase()),
-      ].slice(0, 5);
+        // Filtrar la ciudad si ya existe y ponerla al inicio (máx 5 ciudades)
+        historyStore.cities = [
+          cleanName,
+          ...currentList.filter((c) => c.toLowerCase() !== cleanName.toLowerCase()),
+        ].slice(0, 5);
+      })
+      .catch((err: any) => {
+        // Manejo amigable de errores
+        weatherStore.error = err.message || 'Error inesperado al obtener los datos del clima.';
+        weatherStore.data = null;
+      })
+      .finally(() => {
+        weatherStore.loading = false;
+      });
 
-    } catch (err: any) {
-      // Manejo amigable de errores de red o ciudad no encontrada
-      weatherStore.error = err.message || 'Error inesperado al obtener los datos del clima.';
-      weatherStore.data = null;
-    } finally {
-      weatherStore.loading = false;
+    // Si estamos en el servidor (SSR), retornamos la promesa para que Qwik espere
+    // a resolverla antes de enviar el HTML final (cargando el clima inicial).
+    // Si estamos en el cliente, retornamos void para que no bloquee el renderizado
+    // y muestre el Spinner inmediatamente.
+    if (isServer) {
+      return promise;
     }
   });
 
