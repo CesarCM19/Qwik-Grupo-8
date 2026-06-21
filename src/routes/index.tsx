@@ -38,22 +38,28 @@ export default component$(() => {
 
     // Realizar la petición asíncrona
     const promise = fetchWeather(city)
-      .then((data) => {
-        weatherStore.data = data;
+      .then((res) => {
+        if (res.success && res.data) {
+          weatherStore.data = res.data;
 
-        // Actualizar el historial reactivamente
-        const cleanName = data.name.trim();
-        const currentList = historyStore.cities;
+          // Actualizar el historial reactivamente
+          const cleanName = res.data.name.trim();
+          const currentList = historyStore.cities;
 
-        // Filtrar la ciudad si ya existe y ponerla al inicio (máx 5 ciudades)
-        historyStore.cities = [
-          cleanName,
-          ...currentList.filter((c) => c.toLowerCase() !== cleanName.toLowerCase()),
-        ].slice(0, 5);
+          // Filtrar la ciudad si ya existe y ponerla al inicio (máx 5 ciudades)
+          historyStore.cities = [
+            cleanName,
+            ...currentList.filter((c) => c.toLowerCase() !== cleanName.toLowerCase()),
+          ].slice(0, 5);
+        } else {
+          // Asignar el mensaje de error explícito retornado del servidor
+          weatherStore.error = res.error || 'Error inesperado al obtener los datos del clima.';
+          weatherStore.data = null;
+        }
       })
-      .catch((err: any) => {
-        // Manejo amigable de errores
-        weatherStore.error = err.message || 'Error inesperado al obtener los datos del clima.';
+      .catch(() => {
+        // Manejo de errores de red en la llamada RPC
+        weatherStore.error = 'Ocurrió un error inesperado al conectar con el servidor.';
         weatherStore.data = null;
       })
       .finally(() => {
