@@ -1,109 +1,101 @@
-# Qwik City App ⚡️
+# 🌤️ WeatherSky - Aplicación del Clima en Qwik
 
-- [Qwik Docs](https://qwik.dev/)
-- [Discord](https://qwik.dev/chat)
-- [Qwik GitHub](https://github.com/QwikDev/qwik)
-- [@QwikDev](https://twitter.com/QwikDev)
-- [Vite](https://vitejs.dev/)
+Proyecto universitario desarrollado para la materia de Ingeniería de Software (Universidad de Costa Rica). **WeatherSky** es una aplicación del clima responsiva, moderna y ultra rápida construida con el framework reactivo **Qwik**, **Qwik City** y la API gratuita de **OpenWeatherMap**.
 
 ---
 
-## Project Structure
+## 🚀 Características del Proyecto
 
-This project is using Qwik with [QwikCity](https://qwik.dev/qwikcity/overview/). QwikCity is just an extra set of tools on top of Qwik to make it easier to build a full site, including directory-based routing, layouts, and more.
+*   **Buscador Inteligente:** Permite consultar el clima de cualquier ciudad del mundo ingresando el nombre y presionando "Enter" o haciendo clic en "Buscar".
+*   **Métricas del Clima en Tiempo Real:** Muestra la temperatura actual (°C), descripción detallada del clima en español, nivel de humedad (%) y velocidad del viento (km/h).
+*   **Temas Dinámicos Visuales:** El gradiente del fondo de la aplicación cambia suavemente de color según el estado del tiempo de la ciudad consultada (despejado, lluvioso, nublado, nevado, tormentoso o con niebla).
+*   **Diseño Premium (Glassmorphism):** Interfaz limpia, responsiva y translúcida construida desde cero con CSS puro, sin librerías de terceros.
+*   **Historial de Búsquedas Persistente:** Muestra las últimas 5 ciudades buscadas como botones rápidos. El historial persiste en el navegador gracias a `localStorage`.
+*   **Carga No Bloqueante (Spinner):** Muestra una animación de carga interactiva fluida mientras se realiza la consulta, evitando que la interfaz se congele.
+*   **Control de Errores Amigable:** Si la ciudad no existe o hay problemas de red, se muestra una tarjeta explicativa con opción a reintentar.
 
-Inside your project, you'll see the following directory structure:
+---
 
-```
-├── public/
-│   └── ...
-└── src/
-    ├── components/
-    │   └── ...
-    └── routes/
-        └── ...
-```
+## 🛠️ Tecnologías Utilizadas
 
-- `src/routes`: Provides the directory-based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.dev/qwikcity/routing/overview/) for more info.
+*   [Qwik (v1.20.0)](https://qwik.dev/) - Framework de JavaScript optimizado para Resumabilidad y SSR.
+*   [Qwik City](https://qwik.dev/docs/qwikcity/) - Router oficial y framework de meta-páginas para Qwik.
+*   [Vite](https://vite.dev/) - Motor de construcción y servidor de desarrollo.
+*   [TypeScript](https://www.typescriptlang.org/) - Tipado estático y robusto de datos.
+*   [OpenWeatherMap API](https://openweathermap.org/) - Proveedor de datos climáticos mundiales.
 
-- `src/components`: Recommended directory for components.
+---
 
-- `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
+## 💻 Instalación y Configuración Local
 
-## Add Integrations and deployment
+### Requisitos previos
+*   Tener instalado [Node.js](https://nodejs.org/) (versión 18.17.0, 20.3.0 o superior).
 
-Use the `npm run qwik add` command to add additional integrations. Some examples of integrations includes: Cloudflare, Netlify or Express Server, and the [Static Site Generator (SSG)](https://qwik.dev/qwikcity/guides/static-site-generation/).
-
-```shell
-npm run qwik add # or `yarn qwik add`
-```
-
-## Development
-
-Development mode uses [Vite's development server](https://vitejs.dev/). The `dev` command will server-side render (SSR) the output during development.
-
-```shell
-npm start # or `yarn start`
+### Paso 1: Clonar o descargar el repositorio
+Navega a la carpeta del proyecto en tu terminal:
+```bash
+cd Qwik-Grupo-8
 ```
 
-> Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
-
-## Preview
-
-The preview command will create a production build of the client modules, a production build of `src/entry.preview.tsx`, and run a local server. The preview server is only for convenience to preview a production build locally and should not be used as a production server.
-
-```shell
-npm run preview # or `yarn preview`
+### Paso 2: Instalar dependencias
+Instala los paquetes necesarios definidos en el `package.json`:
+```bash
+npm install
 ```
 
-## Production
-
-The production build will generate client and server modules by running both client and server build commands. The build command will use Typescript to run a type check on the source code.
-
-```shell
-npm run build # or `yarn build`
+### Paso 3: Configurar variables de entorno
+Crea un archivo llamado `.env` en la raíz del proyecto y añade tu API Key privada de OpenWeatherMap de la siguiente manera:
+```env
+OPENWEATHER_API_KEY=tu_api_key_real_aqui
 ```
+> ⚠️ **Importante:** El archivo `.env` está configurado en el `.gitignore` para que tu clave privada nunca se suba públicamente a GitHub.
 
-## Vercel Edge
-
-This starter site is configured to deploy to [Vercel Edge Functions](https://vercel.com/docs/concepts/functions/edge-functions), which means it will be rendered at an edge location near to your users.
-
-## Installation
-
-The adaptor will add a new `vite.config.ts` within the `adapters/` directory, and a new entry file will be created, such as:
-
+### Paso 4: Iniciar el servidor de desarrollo
+Corre el comando para iniciar el servidor de desarrollo local de Vite:
+```bash
+npm start
 ```
-└── adapters/
-    └── vercel-edge/
-        └── vite.config.ts
-└── src/
-    └── entry.vercel-edge.tsx
-```
+Abre en tu navegador la dirección: [http://localhost:5173/](http://localhost:5173/)
 
-Additionally, within the `package.json`, the `build.server` script will be updated with the Vercel Edge build.
+---
 
-## Production build
+## 📖 Manual de Usuario
 
-To build the application for production, use the `build` command, this command will automatically run `npm run build.server` and `npm run build.client`:
+1.  **Carga Inicial:** Al ingresar al sitio, verás el clima pre-renderizado de la ciudad de **San José** (Costa Rica).
+2.  **Buscar Clima:** Escribe el nombre de la ciudad que deseas consultar (ej: `Madrid`, `Tokyo`, `Cartago`) en la barra superior.
+3.  **Ejecutar Consulta:** Presiona la tecla **Enter** o haz clic en el botón **Buscar**. Verás aparecer un spinner animado mientras se obtienen los datos.
+4.  **Ver Métricas:** Una vez cargada, la tarjeta central mostrará la temperatura redondeada, un icono representativo en alta resolución y detalles de viento y humedad. El fondo general cambiará de tonalidad según el clima.
+5.  **Búsqueda Rápida:** Las últimas 5 ciudades consultadas se guardarán en la sección "Búsquedas Recientes". Puedes hacer clic en cualquiera de ellas para recargar su clima al instante.
+6.  **Borrar Historial:** Si deseas limpiar la lista, puedes borrar los datos de navegación o limpiar la caché de `localStorage` del navegador.
 
-```shell
-npm run build
-```
+---
 
-[Read the full guide here](https://github.com/QwikDev/qwik/blob/main/starters/adapters/vercel-edge/README.md)
+## 🎓 Guía para la Defensa Técnica (Presentación Universitaria)
 
-## Dev deploy
+Si necesitas defender la arquitectura del proyecto frente a tus profesores de Ingeniería de Software, aquí tienes la explicación detallada de los hooks y características exclusivas de Qwik aplicadas:
 
-To deploy the application for development:
+### 1. `server$` (En `src/services/weather.ts`)
+*   **Defensa:** Qwik provee la función `server$` para crear funciones RPC (Remote Procedure Call). Todo lo que se escriba dentro se ejecuta **exclusivamente en el servidor**.
+*   **¿Para qué sirve aquí?:** Nos permite leer la variable `OPENWEATHER_API_KEY` mediante `this.env.get()` de manera segura en el backend de Vercel. De esta forma, el API Key nunca viaja al navegador del usuario, protegiendo las credenciales del proyecto de accesos maliciosos.
 
-```shell
-npm run deploy
-```
+### 2. `useSignal` (En `index.tsx` y `search-bar.tsx`)
+*   **Defensa:** Es el gancho reactivo base de Qwik para almacenar valores primitivos individuales (strings, numbers, booleans) y rastrear sus cambios de forma reactiva.
+*   **¿Para qué sirve aquí?:** Almacena el valor de la ciudad activa (`activeCity`) y la entrada de texto del buscador (`query`).
 
-Notice that you might need a [Vercel account](https://docs.Vercel.com/get-started/) in order to complete this step!
+### 3. `useStore` (En `index.tsx`)
+*   **Defensa:** Similar a `useSignal`, pero optimizado para guardar estructuras y colecciones de objetos más complejos u objetos con múltiples propiedades anidadas.
+*   **¿Para qué sirve aquí?:** Define el estado dinámico del clima (`weatherStore` con datos, loading y error) y del historial (`historyStore` con la lista de ciudades).
 
-## Production deploy
+### 4. `useTask$` Híbrido (En `index.tsx`)
+*   **Defensa:** Es un disparador reactivo que se ejecuta cuando cambian las dependencias rastreadas (en este caso, `activeCity.value`).
+*   **¿Para qué sirve aquí?:**
+    *   **En el servidor (SSR):** Si detecta que estamos en el servidor (`isServer === true`), retorna la promesa del fetch de clima para que el servidor de Qwik **espere** a cargar el clima antes de enviar el HTML final (cargando San José de inmediato al usuario).
+    *   **En el cliente:** Retorna `void` para **no bloquear** la interfaz del navegador. Esto hace que el spinner de carga se dibuje al instante apenas el usuario escribe una nueva ciudad.
 
-The project is ready to be deployed to Vercel. However, you will need to create a git repository and push the code to it.
+### 5. `useVisibleTask$` (En `index.tsx`)
+*   **Defensa:** Qwik trabaja bajo el principio de "Resumabilidad", lo que significa que el JS en el cliente no se ejecuta al iniciar para mejorar la velocidad. Este hook es la excepción: le dice a Qwik que ejecute código obligatoriamente en el navegador tan pronto como el componente se monte en el DOM.
+*   **¿Para qué sirve aquí?:** Lo usamos exclusivamente para interactuar con la API del navegador `localStorage` y recuperar el historial de búsquedas del usuario al cargar la web.
 
-You can [deploy your site to Vercel](https://vercel.com/docs/concepts/deployments/overview) either via a Git provider integration or through the Vercel CLI.
+### 6. `preventdefault:submit` (En `search-bar.tsx`)
+*   **Defensa:** Evita la recarga nativa de la página de forma síncrona mediante el Qwikloader (un script minúsculo de <1KB que corre antes de descargar el JS pesado).
+*   **¿Para qué sirve aquí?:** Como Qwik carga el JS de forma diferida, un `event.preventDefault()` común de React en el submit de un formulario se ejecutaría demasiado tarde y la página se recargaría. `preventdefault:submit` lo intercepta al instante.
