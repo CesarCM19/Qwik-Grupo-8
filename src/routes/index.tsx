@@ -185,8 +185,16 @@ export default component$(() => {
                 </svg>
               </div>
               <div class="error-details">
-                <h4 class="error-title">No pudimos obtener el clima</h4>
-                <p class="error-message">{weatherStore.error}</p>
+                <h4 class="error-title">
+                  {weatherStore.error === 'Ciudad no encontrada'
+                    ? 'Ciudad no encontrada'
+                    : 'No pudimos obtener el clima'}
+                </h4>
+                <p class="error-message">
+                  {weatherStore.error === 'Ciudad no encontrada'
+                    ? 'Por favor, verifica la ortografía del nombre de la ciudad e intenta de nuevo.'
+                    : weatherStore.error}
+                </p>
                 <button
                   type="button"
                   onClick$={() => {

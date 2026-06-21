@@ -42,7 +42,7 @@ export const fetchWeather = server$(async function (city: string): Promise<Weath
 
     if (!response.ok) {
       if (response.status === 404) {
-        throw new Error(`La ciudad "${cleanCity}" no fue encontrada en OpenWeatherMap.`);
+        throw new Error('Ciudad no encontrada');
       }
       throw new Error(`Error de la API (Status: ${response.status}).`);
     }
