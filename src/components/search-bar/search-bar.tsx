@@ -30,10 +30,8 @@ export const SearchBar = component$<SearchBarProps>(({ onSearch$ }) => {
         Qwik no descarga el código del manejador hasta que ocurre la interacción.
       */}
       <form
-        onSubmit$={(e) => {
-          e.preventDefault(); // Previene la recarga del navegador
-          handleSubmit();
-        }}
+        preventdefault:submit
+        onSubmit$={handleSubmit}
         class="search-form"
       >
         <div class="search-input-wrapper">
