@@ -2,7 +2,10 @@ import { component$ } from "@builder.io/qwik";
 import { useDocumentHead, useLocation } from "@builder.io/qwik-city";
 
 /**
- * The RouterHead component is placed inside of the document `<head>` element.
+ * El componente RouterHead se coloca dentro del elemento `<head>` del documento.
+ * 
+ * component$: Convierte a RouterHead en un componente que puede ser cargado 
+ * dinámicamente por Qwik gracias al sufijo '$' (marca el punto de lazy-loading).
  */
 export const RouterHead = component$(() => {
   const head = useDocumentHead();

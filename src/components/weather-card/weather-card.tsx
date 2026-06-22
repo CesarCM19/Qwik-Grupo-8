@@ -5,6 +5,11 @@ interface WeatherCardProps {
   data: WeatherData;
 }
 
+/**
+ * component$: Declaración principal de un componente en Qwik.
+ * El uso de '$' indica al framework que este componente (WeatherCard) puede ser
+ * serializado y empaquetado de forma independiente para cargarse solo cuando sea renderizado.
+ */
 export const WeatherCard = component$<WeatherCardProps>(({ data }) => {
   // Obtener la URL del icono en alta resolución (las de OpenWeatherMap @4x son grandes y nítidas)
   const iconUrl = `https://openweathermap.org/img/wn/${data.icon}@4x.png`;

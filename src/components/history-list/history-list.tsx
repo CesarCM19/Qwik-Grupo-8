@@ -9,6 +9,11 @@ interface HistoryListProps {
   onSelectCity$: PropFunction<(city: string) => void>;
 }
 
+/**
+ * component$: Función fundamental de Qwik.
+ * El sufijo '$' indica que este componente se puede extraer y cargar de forma asíncrona
+ * (lazy loading) solo cuando sea necesario, mejorando el rendimiento inicial.
+ */
 export const HistoryList = component$<HistoryListProps>(({ cities, onSelectCity$ }) => {
   // Si no hay historial de búsquedas, no mostramos nada
   if (cities.length === 0) {
@@ -40,6 +45,8 @@ export const HistoryList = component$<HistoryListProps>(({ cities, onSelectCity$
           <button
             key={city}
             type="button"
+            // onClick$: Evento asíncrono en Qwik. El código del manejador no se descarga
+            // hasta que el usuario hace clic, evitando enviar JavaScript innecesario.
             onClick$={() => onSelectCity$(city)}
             class="history-pill-button"
             aria-label={`Buscar clima para ${city}`}
