@@ -1,4 +1,7 @@
+// component$: Función base para crear componentes con carga diferida (lazy load) en Qwik
 import { component$ } from '@builder.io/qwik';
+
+// type WeatherData: Interfaz TypeScript que define la estructura de datos del clima para evitar errores
 import type { WeatherData } from '../../services/weather';
 
 interface WeatherCardProps {

@@ -1,3 +1,7 @@
+// component$: Crea componentes perezosos (lazy).
+// useSignal: Maneja el estado local simple (como el texto del input).
+// type PropFunction: Tipado especial para funciones pasadas como props, permite serialización.
+// $: Crea un QRL (Qwik Resource Locator) para extraer el código de eventos y cargarlos asíncronamente.
 import { component$, useSignal, type PropFunction, $ } from '@builder.io/qwik';
 
 interface SearchBarProps {

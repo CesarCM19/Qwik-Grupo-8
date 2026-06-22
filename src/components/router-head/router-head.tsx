@@ -1,4 +1,8 @@
+// component$: Construye el componente Head de la página.
 import { component$ } from "@builder.io/qwik";
+
+// useDocumentHead: Obtiene los metadatos de SEO y título definidos en la ruta actual.
+// useLocation: Obtiene la información de la URL actual para configuraciones como el enlace canónico.
 import { useDocumentHead, useLocation } from "@builder.io/qwik-city";
 
 /**

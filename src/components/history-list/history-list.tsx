@@ -1,3 +1,5 @@
+// component$: Utilizado para declarar el componente visual de la lista.
+// type PropFunction: Asegura que el evento onSelectCity$ sea serializable por Qwik.
 import { component$, type PropFunction } from '@builder.io/qwik';
 
 interface HistoryListProps {

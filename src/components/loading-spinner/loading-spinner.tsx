@@ -1,3 +1,4 @@
+// component$: Usado para construir componentes puramente visuales en Qwik, permitiendo su separación y carga asíncrona si es necesario.
 import { component$ } from '@builder.io/qwik';
 
 /**
