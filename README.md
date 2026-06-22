@@ -1,6 +1,6 @@
 # Aplicación del Clima en Qwik
 
-Proyecto universitario desarrollado para la materia de Ingeniería de Software (Universidad de Costa Rica). Una aplicación del clima responsiva, moderna y ultra rápida construida con el framework reactivo **Qwik**, **Qwik City** y la API de **OpenWeatherMap**.
+Una aplicación del clima responsiva, moderna y ultra rápida construida con el framework reactivo **Qwik**, **Qwik City** y la API de **OpenWeatherMap**.
 
 ---
 
