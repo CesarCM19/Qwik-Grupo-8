@@ -12,8 +12,10 @@ import { component$ } from '@builder.io/qwik';
  */
 export const LoadingSpinner = component$(() => {
   return (
+    // Capa de fondo semitransparente (overlay) que cubre la pantalla
     <div class="loader-container">
       <div class="spinner-card">
+        {/* Anillos animados por CSS que giran */}
         <div class="spinner-ring">
           <div></div>
           <div></div>

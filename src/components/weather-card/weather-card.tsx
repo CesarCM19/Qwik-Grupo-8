@@ -18,8 +18,10 @@ export const WeatherCard = component$<WeatherCardProps>(({ data }) => {
   const iconUrl = `https://openweathermap.org/img/wn/${data.icon}@4x.png`;
 
   return (
+    // Contenedor principal de la tarjeta de clima
     <div class="weather-card">
       <div class="card-header">
+        {/* data.name: Imprime reactivamente el nombre de la ciudad */}
         <h2 class="city-name">{data.name}</h2>
         <span class="country-badge">Clima Actual</span>
       </div>
@@ -28,10 +30,12 @@ export const WeatherCard = component$<WeatherCardProps>(({ data }) => {
         {/* Sección principal de temperatura e icono */}
         <div class="main-info">
           <div class="temp-container">
+            {/* data.temp: Imprime la temperatura */}
             <span class="temperature">{data.temp}</span>
             <span class="temp-unit">°C</span>
           </div>
           <div class="weather-icon-wrapper">
+            {/* img: Muestra el icono descargado de OpenWeather */}
             <img
               src={iconUrl}
               alt={data.description}

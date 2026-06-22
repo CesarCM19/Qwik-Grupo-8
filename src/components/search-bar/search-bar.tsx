@@ -28,6 +28,7 @@ export const SearchBar = component$<SearchBarProps>(({ onSearch$ }) => {
   });
 
   return (
+    // Contenedor principal de la barra de búsqueda
     <div class="search-bar-container">
       {/* 
         onKeyDown$ y onSubmit$ terminan con '$' porque son manejadores de eventos asíncronos en Qwik. 
@@ -39,10 +40,12 @@ export const SearchBar = component$<SearchBarProps>(({ onSearch$ }) => {
         class="search-form"
       >
         <div class="search-input-wrapper">
+          {/* input: Campo de texto vinculado reactivamente al estado 'query' */}
           <input
             type="text"
             placeholder="Buscar ciudad (ej. Madrid, Tokyo, San José)..."
             value={query.value}
+            // onInput$: Actualiza el estado 'query' en tiempo real cada vez que se teclea
             onInput$={(e) => {
               query.value = (e.target as HTMLInputElement).value;
             }}
@@ -51,6 +54,7 @@ export const SearchBar = component$<SearchBarProps>(({ onSearch$ }) => {
             required
             autoComplete="off"
           />
+          {/* button: Al hacer clic, dispara el evento onSubmit$ del formulario padre */}
           <button type="submit" class="search-button" aria-label="Buscar clima">
             {/* Icono de Lupa moderno en SVG */}
             <svg

@@ -23,7 +23,9 @@ export const HistoryList = component$<HistoryListProps>(({ cities, onSelectCity$
   }
 
   return (
+    // Contenedor principal de la sección del historial
     <div class="history-container">
+      {/* Cabecera con icono y título */}
       <div class="history-header">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,8 +45,10 @@ export const HistoryList = component$<HistoryListProps>(({ cities, onSelectCity$
         <h3 class="history-title">Búsquedas Recientes</h3>
       </div>
       <div class="history-pills">
+        {/* Recorre el arreglo de ciudades y genera un botón por cada una */}
         {cities.map((city) => (
           <button
+            // key: Obligatorio al renderizar listas para que el framework optimice las actualizaciones
             key={city}
             type="button"
             // onClick$: Evento asíncrono en Qwik. El código del manejador no se descarga

@@ -17,16 +17,20 @@ export const RouterHead = component$(() => {
 
   return (
     <>
+      {/* title: Inyecta el título de la página (por ejemplo: "Clima - Consulta...") */}
       <title>{head.title}</title>
 
+      {/* Enlace canónico basado en la URL actual */}
       <link rel="canonical" href={loc.url.href} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+      {/* Recorre e inyecta todas las etiquetas <meta> configuradas en el index.tsx */}
       {head.meta.map((m) => (
         <meta key={m.key} {...m} />
       ))}
 
+      {/* Recorre e inyecta todas las etiquetas <link> */}
       {head.links.map((l) => (
         <link key={l.key} {...l} />
       ))}
